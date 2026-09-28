@@ -13,11 +13,31 @@ import { organizationJsonLd, websiteJsonLd } from "@/lib/structuredData";
 const jakarta = localFont({
   variable: "--font-jakarta",
   src: [
-    { path: "../fonts/plus-jakarta-sans/plus-jakarta-sans-latin-400-normal.woff2", weight: "400", style: "normal" },
-    { path: "../fonts/plus-jakarta-sans/plus-jakarta-sans-latin-500-normal.woff2", weight: "500", style: "normal" },
-    { path: "../fonts/plus-jakarta-sans/plus-jakarta-sans-latin-600-normal.woff2", weight: "600", style: "normal" },
-    { path: "../fonts/plus-jakarta-sans/plus-jakarta-sans-latin-700-normal.woff2", weight: "700", style: "normal" },
-    { path: "../fonts/plus-jakarta-sans/plus-jakarta-sans-latin-800-normal.woff2", weight: "800", style: "normal" },
+    {
+      path: "../fonts/plus-jakarta-sans/plus-jakarta-sans-latin-400-normal.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../fonts/plus-jakarta-sans/plus-jakarta-sans-latin-500-normal.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../fonts/plus-jakarta-sans/plus-jakarta-sans-latin-600-normal.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../fonts/plus-jakarta-sans/plus-jakarta-sans-latin-700-normal.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../fonts/plus-jakarta-sans/plus-jakarta-sans-latin-800-normal.woff2",
+      weight: "800",
+      style: "normal",
+    },
   ],
   display: "swap",
 });
@@ -29,6 +49,11 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+
+  verification: {
+    google: "3aMoPVIoZ-KMS8uDlbVayqEM-7HODBKPNfJGP5qFPVA",
+  },
+
   openGraph: {
     type: "website",
     siteName: siteConfig.name,
@@ -43,7 +68,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${jakarta.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-paper text-ink">
