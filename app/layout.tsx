@@ -1,16 +1,22 @@
 import type { Metadata } from "next";
-import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import type { ReactNode } from "react";
 import localFont from "next/font/local";
-import "./globals.css";
+
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { siteConfig } from "@/lib/site";
-import { organizationJsonLd, websiteJsonLd } from "@/lib/structuredData";
+import {
+  organizationJsonLd,
+  websiteJsonLd,
+} from "@/lib/structuredData";
 
-// Self-hosted (no external Google Fonts request at build or runtime —
-// better Core Web Vitals and works fully offline).
+import { Analytics } from "@vercel/analytics/next";
+
+import "./globals.css";
+
+// Self-hosted fonts
 const jakarta = localFont({
   variable: "--font-jakarta",
   src: [
@@ -45,10 +51,12 @@ const jakarta = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
+
   title: {
     default: `${siteConfig.name} – ${siteConfig.tagline}`,
     template: `%s | ${siteConfig.name}`,
   },
+
   description: siteConfig.description,
 
   verification: {
@@ -62,6 +70,7 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     url: siteConfig.url,
   },
+
   twitter: {
     card: "summary_large_image",
     title: `${siteConfig.name} – ${siteConfig.tagline}`,
@@ -69,15 +78,24 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
   return (
     <html lang="en" className={`${jakarta.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-paper text-ink">
         <GoogleAnalytics />
+        <Analytics />
+
         <JsonLd data={organizationJsonLd()} />
         <JsonLd data={websiteJsonLd()} />
+
         <Header />
+
         <main className="flex-1">{children}</main>
+
         <Footer />
       </body>
     </html>
