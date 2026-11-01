@@ -4,7 +4,7 @@ export const siteConfig = {
   description:
     "Simple, fast and accurate calculators for everyday decisions — SIP, EMI, percentage, age and more.",
   // Update this to the real production domain before deploying.
-  url: "https://numberly.site",
+ url: "https://www.numberly.site",
   // Real, monitored inbox for Numberly.
   contactEmail: "numberly.site@gmail.com",
   // Date the legal pages content below was last written/reviewed. Update
